@@ -1,0 +1,19 @@
+.note {
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 1fr 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.noteTitle {
+    grid-column: 1/3;
+    text-align: left;
+}
+
+.icons {}
+
+.user {
+    align-self: end;
+    justify-self: self-end;
+}
