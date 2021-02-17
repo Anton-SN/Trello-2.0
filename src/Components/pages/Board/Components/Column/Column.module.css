@@ -1,0 +1,18 @@
+.container {
+    width: 200px;
+    /* margin + title */
+    height :calc(100vh - 146px);
+    background: #f4f5f7;
+    border-radius: 4px;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.title {
+    width: 170px;
+    text-align: left;
+}
