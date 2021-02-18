@@ -1,10 +1,11 @@
 .container {
     width: 200px;
     /* margin + title */
-    height :calc(100vh - 146px);
+    height :calc(100vh - 148px);
     background: #f4f5f7;
     border-radius: 4px;
     margin-left: 20px;
+    overflow: scroll;
 }
 
 .titleContainer {
