@@ -1,0 +1,15 @@
+.container {
+    margin-left: 20px;
+}
+
+.formContainer {
+    background: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.input {
+}
+
+.button { width: 100px }

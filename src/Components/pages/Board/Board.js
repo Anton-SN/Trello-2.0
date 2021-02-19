@@ -6,7 +6,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import * as noteActions from '../../redux/actions/board';
+
 import Column from './Components/Column/Column';
+import AddColumn from './Components/AddColumn/AddColumn';
 import Note from './Components/Note/Note';
 import styles from './Board.module.css';
 
@@ -96,6 +98,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
             </Droppable>
           ))}
         </DragDropContext>
+        <AddColumn />
       </div>
     </Paper>
   );
@@ -126,7 +129,6 @@ const mapDispatch = (dispatch) =>
   bindActionCreators(
     {
       changeLocation: noteActions.changeNoteLocation,
-      addColumn: noteActions.addColumn,
     },
     dispatch,
   );

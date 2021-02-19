@@ -2,6 +2,7 @@ import { CHANGE_NOTE_LOCATION, ADD_COLUMN } from '../constants/board';
 
 const initialState = {
   boardId: 1,
+  quantityNotes: 8,
   columns: [
     {
       columnId: 1,
@@ -89,14 +90,20 @@ const changeNoteLocation = (state, payload) => {
   };
 };
 
-const addColumn = (state) => state;
+const addColumn = (state, payload) => ({
+  ...state,
+  columns: [
+    ...state.columns,
+    { columnId: state.columns.length + 1, name: payload, notes: [] },
+  ],
+});
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CHANGE_NOTE_LOCATION:
       return changeNoteLocation(state, payload);
     case ADD_COLUMN:
-      return addColumn(state);
+      return addColumn(state, payload);
     default:
       return state;
   }
