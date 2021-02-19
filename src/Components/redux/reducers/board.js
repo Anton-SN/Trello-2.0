@@ -21,14 +21,14 @@ const initialState = {
       columnId: 2,
       name: 'В работе',
       notes: [
-        { noteId: 1, title: 'Установка плит под фундамент' },
-        { noteId: 2, title: 'Установка плит под' },
-        { noteId: 3, title: 'Установка плит' },
-        { noteId: 4, title: 'Установка' },
-        { noteId: 5, title: 'Установка 1' },
-        { noteId: 6, title: 'Установка 1 2' },
-        { noteId: 7, title: 'Установка 1 2 3' },
-        { noteId: 8, title: 'Установка 1 2 3 4' },
+        // { noteId: 1, title: 'Установка плит под фундамент' },
+        // { noteId: 2, title: 'Установка плит под' },
+        // { noteId: 3, title: 'Установка плит' },
+        { noteId: 5, title: 'Установка' },
+        { noteId: 6, title: 'Установка 1' },
+        { noteId: 7, title: 'Установка 1 2' },
+        { noteId: 8, title: 'Установка 1 2 3' },
+        { noteId: 9, title: 'Установка 1 2 3 4' },
       ],
     },
     // {
@@ -73,10 +73,28 @@ const changeNoteLocation = (state, payload) => {
         return column;
       }),
     };
-    // } else {
-    // console.info(payload);
   }
-  return state;
+  const beginCloneNotes = [...state.columns[beginColumn - 1].notes];
+  const endCloneNotes = [...state.columns[endColumn - 1].notes];
+  const [removed] = beginCloneNotes.splice(beginNote, 1);
+  endCloneNotes.splice(endNote, 0, removed);
+  const beginCloneColumn = { ...state.columns[beginColumn - 1] };
+  const endCloneColumn = { ...state.columns[endColumn - 1] };
+  beginCloneColumn.notes = beginCloneNotes;
+  endCloneColumn.notes = endCloneNotes;
+
+  return {
+    ...state,
+    columns: [...state.columns].map((column) => {
+      if (column.columnId === endColumn) {
+        return { ...endCloneColumn };
+      }
+      if (column.columnId === beginColumn) {
+        return { ...beginCloneColumn };
+      }
+      return column;
+    }),
+  };
 };
 
 const addColumn = (state) => state;

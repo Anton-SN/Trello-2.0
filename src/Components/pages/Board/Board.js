@@ -13,7 +13,6 @@ import styles from './Board.module.css';
 const Board = ({ boardId, columns, changeLocation }) => {
   const onDragAndDrop = (result) => {
     const { source, destination } = result;
-    console.info(result);
     if (!destination) {
       return;
     }
@@ -65,6 +64,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
                       </Draggable>
                     ))}
                   </Column>
+                  {provided.placeholder}
                 </div>
               )}
             </Droppable>
