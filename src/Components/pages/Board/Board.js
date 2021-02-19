@@ -36,7 +36,10 @@ const Board = ({ boardId, columns, changeLocation }) => {
       <div className={styles.columnContainer} key={boardId}>
         <DragDropContext onDragEnd={onDragAndDrop}>
           {columns.map(({ columnId, name, notes }) => (
-            <Droppable droppableId={`column-${columnId}`}>
+            <Droppable
+              droppableId={`column-${columnId}`}
+              key={`column-${columnId}`}
+            >
               {(provided) => (
                 <div
                   key={columnId}
