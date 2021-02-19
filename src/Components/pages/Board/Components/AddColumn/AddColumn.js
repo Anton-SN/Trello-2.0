@@ -29,9 +29,9 @@ const AddColumn = ({ addColumn }) => {
           <div className={styles.formContainer}>
             <TextField
               id="add-column"
+              autoFocus
               value={title}
               onChange={({ target: { value } }) => setTitle(value)}
-              className={styles.input}
             />
             <Button
               variant="contained"

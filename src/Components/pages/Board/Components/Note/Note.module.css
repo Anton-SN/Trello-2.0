@@ -11,9 +11,8 @@
     text-align: left;
 }
 
-.icons {}
-
 .user {
     align-self: end;
     justify-self: self-end;
+    grid-column: 2;
 }

@@ -1,4 +1,4 @@
-import { CHANGE_NOTE_LOCATION, ADD_COLUMN } from '../constants/board';
+import { CHANGE_NOTE_LOCATION, ADD_COLUMN, ADD_NOTE } from '../constants/board';
 
 const initialState = {
   boardId: 1,
@@ -98,12 +98,28 @@ const addColumn = (state, payload) => ({
   ],
 });
 
+const addNote = (state, { columnId, title }) => ({
+  ...state,
+  quantityNotes: state.quantityNotes + 1,
+  columns: [...state.columns].map((column) => {
+    if (column.columnId === columnId) {
+      return {
+        ...column,
+        notes: [...column.notes, { noteId: state.quantityNotes + 1, title }],
+      };
+    }
+    return column;
+  }),
+});
+
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CHANGE_NOTE_LOCATION:
       return changeNoteLocation(state, payload);
     case ADD_COLUMN:
       return addColumn(state, payload);
+    case ADD_NOTE:
+      return addNote(state, payload);
     default:
       return state;
   }

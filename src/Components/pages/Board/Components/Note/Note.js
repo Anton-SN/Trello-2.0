@@ -10,7 +10,6 @@ const Note = ({ title }) => (
     <Typography component="p" variant="caption" className={styles.noteTitle}>
       {title}
     </Typography>
-    <div className={styles.icons} />
     <div className={styles.user}>
       <Avatar style={{ width: 35, height: 35 }}>A</Avatar>
     </div>

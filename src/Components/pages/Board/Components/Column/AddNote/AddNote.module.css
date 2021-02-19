@@ -1,0 +1,11 @@
+.container {
+    width: 180px;
+    margin: 0 auto 10px auto;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer { padding: 10px }

@@ -66,6 +66,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
                   {...provided.droppableProps}
                 >
                   <Column
+                    id={columnId}
                     title={name}
                     available={
                       available.length === 0
