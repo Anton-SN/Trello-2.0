@@ -6,8 +6,11 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import styles from './Column.module.css';
 
-const Column = ({ title, children }) => (
-  <div className={styles.container}>
+const Column = ({ title, available, children }) => (
+  <div
+    className={styles.container}
+    style={{ background: available ? '#f4f5f7' : 'red' }}
+  >
     <div className={styles.titleContainer}>
       <Typography component="p" variant="body1" className={styles.title}>
         {title}
@@ -24,6 +27,7 @@ const Column = ({ title, children }) => (
 
 Column.propTypes = {
   title: PropTypes.string,
+  available: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.arrayOf(PropTypes.shape({})),
@@ -31,6 +35,7 @@ Column.propTypes = {
 };
 
 Column.defaultProps = {
+  available: true,
   children: [],
   title: '',
 };

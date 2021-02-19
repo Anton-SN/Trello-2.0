@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,6 +11,8 @@ import Note from './Components/Note/Note';
 import styles from './Board.module.css';
 
 const Board = ({ boardId, columns, changeLocation }) => {
+  const [available, setAvailable] = useState([]);
+
   const onDragAndDrop = (result) => {
     const { source, destination } = result;
     if (!destination) {
@@ -25,7 +27,21 @@ const Board = ({ boardId, columns, changeLocation }) => {
       endColumn: +droppableId.split('-').pop(),
     });
 
-    changeLocation({ begin: createBegin(source), end: createEnd(destination) });
+    if (available.includes(+destination.droppableId.split('-').pop())) {
+      changeLocation({
+        begin: createBegin(source),
+        end: createEnd(destination),
+      });
+    }
+    setAvailable([]);
+  };
+
+  const onDragStart = (result) => {
+    const {
+      source: { droppableId },
+    } = result;
+    const index = +droppableId.split('-').pop();
+    setAvailable([index - 1, index, index + 1]);
   };
 
   return (
@@ -34,7 +50,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
         Board
       </Typography>
       <div className={styles.columnContainer} key={boardId}>
-        <DragDropContext onDragEnd={onDragAndDrop}>
+        <DragDropContext onDragEnd={onDragAndDrop} onDragStart={onDragStart}>
           {columns.map(({ columnId, name, notes }) => (
             <Droppable
               droppableId={`column-${columnId}`}
@@ -47,7 +63,14 @@ const Board = ({ boardId, columns, changeLocation }) => {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  <Column title={name}>
+                  <Column
+                    title={name}
+                    available={
+                      available.length === 0
+                        ? true
+                        : available.includes(columnId)
+                    }
+                  >
                     {notes.map(({ noteId, title }, index) => (
                       <Draggable
                         key={`column-${columnId}_note-${noteId}`}
