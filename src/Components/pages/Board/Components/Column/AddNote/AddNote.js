@@ -28,9 +28,11 @@ const AddColumn = ({ id, onBlur, addNote }) => {
             variant="contained"
             color="secondary"
             onClick={() => {
-              addNote({ columnId: id, title });
-              setTitle('');
-              onBlur();
+              if (title !== '') {
+                addNote({ columnId: id, title });
+                setTitle('');
+                onBlur();
+              }
             }}
             style={{ fontSize: 12, marginTop: 10, background: 'seagreen' }}
           >

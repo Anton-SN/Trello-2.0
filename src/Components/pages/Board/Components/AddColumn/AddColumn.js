@@ -37,9 +37,11 @@ const AddColumn = ({ addColumn }) => {
               variant="contained"
               color="secondary"
               onClick={() => {
-                addColumn(title);
-                setState(true);
-                setTitle('');
+                if (title !== '') {
+                  addColumn(title);
+                  setState(true);
+                  setTitle('');
+                }
               }}
               className={styles.button}
               style={{ fontSize: 12, marginTop: 10, background: 'seagreen' }}
