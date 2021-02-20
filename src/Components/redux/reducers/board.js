@@ -8,11 +8,12 @@ const initialState = {
       columnId: 1,
       name: 'Наряды',
       notes: [
-        { noteId: 1, title: 'Установка плит под фундамент' },
+        { noteId: 1, title: 'Установка плит под фундамент', body: 'body' },
         {
           noteId: 2,
           title:
             'Земельные работы по подготовке площадки по установке плит для несущей стены',
+          body: 'body',
         },
       ],
     },
@@ -20,8 +21,8 @@ const initialState = {
       columnId: 2,
       name: 'В работе',
       notes: [
-        { noteId: 3, title: 'Установка плит под фундамент' },
-        { noteId: 4, title: 'Установка плит под фундамент' },
+        { noteId: 3, title: 'Установка плит под фундамент', body: 'body' },
+        { noteId: 4, title: 'Установка плит под фундамент', body: 'body' },
       ],
     },
     {
@@ -32,16 +33,17 @@ const initialState = {
           noteId: 5,
           title:
             'Земельные работы по подготовке площадки по установке плит для несущей стены',
+          body: 'body',
         },
-        { noteId: 6, title: 'Установка плит под фундамент' },
+        { noteId: 6, title: 'Установка плит под фундамент', body: 'body' },
       ],
     },
     {
       columnId: 4,
       name: 'Завершено',
       notes: [
-        { noteId: 7, title: 'Установка плит под фундамент' },
-        { noteId: 8, title: 'Установка плит под фундамент' },
+        { noteId: 7, title: 'Установка плит под фундамент', body: 'body' },
+        { noteId: 8, title: 'Установка плит под фундамент', body: 'body' },
       ],
     },
   ],

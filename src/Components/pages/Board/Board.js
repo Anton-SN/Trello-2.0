@@ -10,6 +10,7 @@ import * as noteActions from '../../redux/actions/board';
 import Column from './Components/Column/Column';
 import AddColumn from './Components/AddColumn/AddColumn';
 import Note from './Components/Note/Note';
+import DispatcherModal from '../../Modal/showModal';
 import styles from './Board.module.css';
 
 const Board = ({ boardId, columns, changeLocation }) => {
@@ -87,7 +88,11 @@ const Board = ({ boardId, columns, changeLocation }) => {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <Note title={title} />
+                            <Note
+                              title={title}
+                              noteId={noteId}
+                              columnId={columnId}
+                            />
                           </div>
                         )}
                       </Draggable>
@@ -100,6 +105,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
           ))}
         </DragDropContext>
         <AddColumn />
+        <DispatcherModal />
       </div>
     </Paper>
   );

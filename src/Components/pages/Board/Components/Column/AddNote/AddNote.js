@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import * as noteActions from '../../../../../redux/actions/board';
 import styles from './AddNote.module.css';
 
-const AddColumn = ({ id, onBlur, addNote }) => {
+const AddColumn = ({ columnId, onBlur, addNote }) => {
   const [title, setTitle] = useState('');
 
   return (
@@ -29,7 +29,7 @@ const AddColumn = ({ id, onBlur, addNote }) => {
             color="secondary"
             onClick={() => {
               if (title !== '') {
-                addNote({ columnId: id, title });
+                addNote({ columnId, title });
                 setTitle('');
                 onBlur();
               }
@@ -45,7 +45,7 @@ const AddColumn = ({ id, onBlur, addNote }) => {
 };
 
 AddColumn.propTypes = {
-  id: PropTypes.number.isRequired,
+  columnId: PropTypes.number.isRequired,
   onBlur: PropTypes.func.isRequired,
   addNote: PropTypes.func.isRequired,
 };

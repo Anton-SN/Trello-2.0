@@ -30,7 +30,7 @@ const Column = ({ id, title, available, children }) => {
         </Tooltip>
       </div>
       <div>{children}</div>
-      {showForm && <AddNote id={id} onBlur={() => setState(false)} />}
+      {showForm && <AddNote columnId={id} onBlur={() => setState(false)} />}
     </div>
   );
 };

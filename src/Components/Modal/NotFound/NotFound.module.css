@@ -1,0 +1,7 @@
+.container {
+    margin: 30% auto;
+    width: 450px;
+    padding: 25px;
+}
+
+.title { border-bottom: 1px solid }
