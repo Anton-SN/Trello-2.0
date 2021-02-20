@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import AddNote from './AddNote/AddNote';
 import styles from './Column.module.css';
 
-const Column = ({ id, title, available, children }) => {
+const Column = ({ id, showAddButton, title, available, children }) => {
   const [showForm, setState] = useState(false);
 
   return (
@@ -19,15 +19,17 @@ const Column = ({ id, title, available, children }) => {
         <Typography component="p" variant="body1" className={styles.title}>
           {title}
         </Typography>
-        <Tooltip title="Добавить заметку" aria-label="add">
-          <IconButton
-            aria-label="Добавить"
-            size="small"
-            onClick={() => setState(true)}
-          >
-            <AddIcon fontSize="small" />
-          </IconButton>
-        </Tooltip>
+        {showAddButton && (
+          <Tooltip title="Добавить заметку" aria-label="add">
+            <IconButton
+              aria-label="Добавить"
+              size="small"
+              onClick={() => setState(true)}
+            >
+              <AddIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        )}
       </div>
       <div>{children}</div>
       {showForm && <AddNote columnId={id} onBlur={() => setState(false)} />}
@@ -39,6 +41,7 @@ Column.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string,
   available: PropTypes.bool,
+  showAddButton: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.shape({}),
     PropTypes.arrayOf(PropTypes.shape({})),
@@ -47,6 +50,7 @@ Column.propTypes = {
 
 Column.defaultProps = {
   available: true,
+  showAddButton: false,
   children: [],
   title: '',
 };

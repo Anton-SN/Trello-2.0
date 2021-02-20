@@ -54,7 +54,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
       </Typography>
       <div className={styles.columnContainer} key={boardId}>
         <DragDropContext onDragEnd={onDragAndDrop} onDragStart={onDragStart}>
-          {columns.map(({ columnId, name, notes }) => (
+          {columns.map(({ columnId, name, notes }, ind) => (
             <Droppable
               droppableId={`column-${columnId}`}
               key={`column-${columnId}`}
@@ -69,6 +69,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
                   <Column
                     id={columnId}
                     title={name}
+                    showAddButton={ind === 0}
                     available={
                       available.length === 0
                         ? true
