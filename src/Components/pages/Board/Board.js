@@ -19,6 +19,7 @@ const Board = ({ boardId, columns, changeLocation }) => {
   const onDragAndDrop = (result) => {
     const { source, destination } = result;
     if (!destination) {
+      setAvailable([]);
       return;
     }
     const createBegin = ({ droppableId, index }) => ({
