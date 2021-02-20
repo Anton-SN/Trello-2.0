@@ -58,6 +58,9 @@ const Board = ({ boardId, columns, changeLocation }) => {
             <Droppable
               droppableId={`column-${columnId}`}
               key={`column-${columnId}`}
+              isDropDisabled={
+                available.length === 0 ? false : !available.includes(columnId)
+              }
             >
               {(provided) => (
                 <div
